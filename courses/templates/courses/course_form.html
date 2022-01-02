@@ -24,6 +24,7 @@
                         </div>
                         <div class="body">
                             <form id="form_validation" method="POST">
+                               {% csrf_token %}
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         {% crispy_field form.name 'class' 'form-control' %}
