@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView,UpdateView,DeleteView,ListView,DetailView
 from .models import course
+from django.http.response import JsonResponse
 
 # Create your views here.
 class NewCourseView(CreateView):
@@ -31,3 +32,13 @@ class DeleteCourseView(DeleteView):
     success_url = '/course/view'
 
 #course_delete_confirm.html
+
+def getcourses(request):
+    course_list_value=list(course.objects.values())
+    print(course_list_value)
+    return JsonResponse({"data":course_list_value})
+
+
+
+def courseview(request):
+    return render(request,"courses/course_view.html")
